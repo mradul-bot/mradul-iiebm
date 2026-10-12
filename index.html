@@ -1,0 +1,2123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily Break-Time Exit Plan | IIEBM Discipline Committee</title>
+
+  <style>
+    :root {
+      --bg-1: #0a0e1a;
+      --bg-2: #101827;
+      --bg-3: #121d35;
+      --panel: rgba(15, 22, 38, 0.88);
+      --panel-2: rgba(25, 32, 52, 0.94);
+      --gold: #d4af37;
+      --gold-light: #f1d77d;
+      --blue: #4a9eff;
+      --teal: #2dd4bf;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --soft: #94a3b8;
+      --line: rgba(212, 175, 55, 0.22);
+      --shadow: 0 20px 50px rgba(0,0,0,0.4);
+      --radius: 26px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(212, 175, 55, 0.12), transparent 22%),
+        radial-gradient(circle at bottom right, rgba(74, 158, 255, 0.09), transparent 25%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2), var(--bg-3));
+      color: var(--text);
+      padding: 18px 10px 60px;
+      min-height: 100vh;
+    }
+
+    .app {
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-card {
+      background: linear-gradient(135deg, rgba(16, 24, 39, 0.94), rgba(22, 28, 46, 0.9));
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      padding: 18px 18px 16px;
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-card::before {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      right: -90px;
+      top: -110px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(74, 158, 255, 0.12), transparent 62%);
+      pointer-events: none;
+    }
+
+    .header-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .branding-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      text-align: center;
+    }
+
+    .logo-wrap {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 22px;
+      padding: 12px 22px;
+      min-height: 90px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+    }
+
+    .logo-img {
+      display: block;
+      max-height: 75px;
+      width: auto;
+      max-width: 380px;
+      object-fit: contain;
+    }
+
+    .logo-fallback {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      min-width: 180px;
+      min-height: 56px;
+      padding: 8px 14px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(74,158,255,0.08));
+      border: 1px solid rgba(212,175,55,0.25);
+      color: var(--text);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      overflow: hidden;
+      width: min(100%, 640px);
+    }
+
+    .title-heading {
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #f8fafc, #d4af37);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .committee-subtitle-wrap {
+      overflow: hidden;
+      white-space: nowrap;
+      width: 100%;
+      position: relative;
+    }
+
+    .committee-subtitle {
+      display: inline-block;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      font-weight: 800;
+      animation: marqueeBounce 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes marqueeBounce {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(20%); }
+    }
+
+    .telemetry-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(212,175,55,0.12);
+    }
+
+    .telemetry-left, .telemetry-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(212,175,55,0.2);
+      background: rgba(212,175,55,0.05);
+      color: var(--text);
+      font-size: 0.79rem;
+      font-weight: 800;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+
+    .clock-pill { color: var(--muted); }
+    .clock-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #22c55e;
+      margin-right: 8px;
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
+    }
+
+    .countdown-pill {
+      background: linear-gradient(135deg, rgba(74,158,255,0.09), rgba(45,212,191,0.06));
+      border-color: rgba(74,158,255,0.25);
+      color: #dbeafe;
+    }
+
+    .countdown-pill.active-release {
+      background: linear-gradient(135deg, rgba(212,175,55,0.12), rgba(45,212,191,0.1));
+      border-color: rgba(212,175,55,0.35);
+      color: var(--gold-light);
+      animation: pulse 1.7s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(212,175,55,0.35); }
+      50% { box-shadow: 0 0 0 8px rgba(212,175,55,0); }
+    }
+
+    .btn-action, .btn-main {
+      min-height: 42px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(212,175,55,0.18);
+      background: rgba(212,175,55,0.06);
+      color: var(--text);
+      font-size: 0.78rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .btn-action:hover, .btn-main:hover {
+      transform: translateY(-1px);
+      background: rgba(212,175,55,0.12);
+    }
+
+    .btn-main {
+      background: linear-gradient(135deg, var(--gold), #caa835);
+      color: #111827;
+      border: none;
+      box-shadow: 0 16px 30px rgba(212,175,55,0.22);
+    }
+
+    /* AUTOMATED LIVE DEPARTURE MONITOR SCREEN */
+    .live-monitor-card {
+      background: linear-gradient(135deg, rgba(16, 24, 39, 0.96), rgba(22, 32, 52, 0.95));
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 24px;
+      padding: 22px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .monitor-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .monitor-grid { grid-template-columns: 1.3fr 1fr; }
+    }
+
+    .monitor-info {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .monitor-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    .badge-green-live {
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      color: #86efac;
+    }
+
+    .badge-red-live {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #fca5a5;
+      animation: pulse-red 1.5s infinite;
+    }
+
+    @keyframes pulse-red {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+      50% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+    }
+
+    .monitor-title {
+      font-size: 1.28rem;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+
+    .monitor-title.title-green { color: #86efac; }
+    .monitor-title.title-red { color: #fca5a5; }
+
+    .monitor-desc {
+      font-size: 0.86rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .monitor-countdown-box {
+      background: rgba(10, 14, 26, 0.65);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 20px;
+      padding: 18px 16px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .countdown-number {
+      font-size: 3.5rem;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1;
+    }
+
+    .countdown-number.green-text { color: #22c55e; }
+    .countdown-number.red-text { color: #ef4444; }
+
+    .countdown-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--soft);
+      font-weight: 800;
+    }
+
+    .filter-card,
+    .day-panel {
+      background: linear-gradient(135deg, rgba(16, 24, 39, 0.93), rgba(22, 30, 46, 0.92));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .filter-card {
+      position: sticky;
+      top: 8px;
+      z-index: 20;
+      padding: 12px 12px 10px;
+      margin-bottom: 16px;
+      backdrop-filter: blur(10px);
+    }
+
+    .filter-top-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      color: var(--soft);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.7rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .filter-status-text {
+      color: var(--gold-light);
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    .filter-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .filter-row::-webkit-scrollbar { display: none; }
+
+    .div-filter-btn {
+      flex: 0 0 auto;
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(212, 175, 55, 0.18);
+      background: rgba(212,175,55,0.04);
+      color: var(--text);
+      font-size: 0.8rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .div-filter-btn.active {
+      background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(74,158,255,0.08));
+      border-color: rgba(212,175,55,0.32);
+      box-shadow: 0 10px 22px rgba(212,175,55,0.12);
+    }
+
+    .nav-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      margin-bottom: 16px;
+    }
+
+    .nav-row::-webkit-scrollbar { display: none; }
+
+    .nav-tab {
+      flex: 0 0 auto;
+      min-height: 42px;
+      padding: 8px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(212,175,55,0.15);
+      background: rgba(212,175,55,0.04);
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 800;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .nav-tab.active {
+      background: linear-gradient(135deg, rgba(212,175,55,0.12), rgba(74,158,255,0.08));
+      border-color: rgba(212,175,55,0.35);
+      color: var(--gold-light);
+    }
+
+    .nav-tab.cr-tab {
+      background: rgba(74,158,255,0.06);
+      border-color: rgba(74,158,255,0.2);
+      color: #dfeeff;
+    }
+
+    .day-panel {
+      overflow: hidden;
+      margin-bottom: 18px;
+      display: block;
+    }
+
+    .day-panel.is-hidden {
+      display: none !important;
+    }
+
+    .panel-header {
+      background: linear-gradient(135deg, rgba(212,175,55,0.07), rgba(74,158,255,0.06));
+      border-bottom: 1px solid rgba(212,175,55,0.12);
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .day-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      font-size: 1.08rem;
+    }
+
+    .day-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--teal));
+      box-shadow: 0 0 14px rgba(212,175,55,0.35);
+    }
+
+    .priority-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(212,175,55,0.18);
+      background: rgba(212,175,55,0.08);
+      color: var(--text);
+      font-size: 0.7rem;
+      font-weight: 800;
+    }
+
+    .priority-badge.p-third {
+      background: rgba(74,158,255,0.08);
+      border-color: rgba(74,158,255,0.2);
+      color: #dbeafe;
+    }
+
+    .priority-badge.p-fourth {
+      background: rgba(212,175,55,0.08);
+      border-color: rgba(212,175,55,0.2);
+      color: var(--gold-light);
+    }
+
+    .desktop-table-wrap {
+      display: none;
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 700px;
+      color: var(--text);
+    }
+
+    th {
+      background: rgba(212,175,55,0.05);
+      color: var(--soft);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(212,175,55,0.12);
+    }
+
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(212,175,55,0.08);
+      vertical-align: middle;
+      background: rgba(10,14,26,0.18);
+      font-size: 0.86rem;
+    }
+
+    tr:hover td { background: rgba(212,175,55,0.03); }
+
+    .time-cell {
+      font-weight: 900;
+      color: var(--gold-light);
+      white-space: nowrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 10px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      font-size: 0.72rem;
+      font-weight: 800;
+      white-space: nowrap;
+      margin: 2px 4px 2px 0;
+    }
+
+    .badge-green {
+      background: rgba(34,197,94,0.12);
+      border-color: rgba(34,197,94,0.25);
+      color: #bbf7d0;
+    }
+
+    .badge-red {
+      background: rgba(239,68,68,0.12);
+      border-color: rgba(239,68,68,0.25);
+      color: #fecaca;
+    }
+
+    .badge-indigo {
+      background: rgba(79,70,229,0.12);
+      border-color: rgba(79,70,229,0.25);
+      color: #c7d2fe;
+    }
+
+    .badge-purple {
+      background: rgba(168,85,247,0.11);
+      border-color: rgba(168,85,247,0.25);
+      color: #e9d5ff;
+    }
+
+    .badge-empty { color: rgba(148,163,184,0.4); }
+
+    .mobile-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 12px;
+    }
+
+    .slot-card {
+      background: rgba(212,175,55,0.04);
+      border: 1px solid rgba(212,175,55,0.12);
+      border-radius: 18px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .slot-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(212,175,55,0.12);
+      padding-bottom: 8px;
+    }
+
+    .slot-time {
+      color: var(--gold-light);
+      font-size: 1rem;
+      font-weight: 900;
+    }
+
+    .slot-tag {
+      color: var(--soft);
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .row-block {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .row-label {
+      color: var(--soft);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.64rem;
+      font-weight: 800;
+    }
+
+    .row-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .step-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 36px;
+      height: 36px;
+      padding: 0 8px;
+      border-radius: 12px;
+      border: 1px solid rgba(212,175,55,0.16);
+      background: rgba(212,175,55,0.08);
+      color: var(--text);
+      font-weight: 900;
+      font-size: 0.82rem;
+    }
+
+    .step-chip.indigo {
+      background: rgba(79,70,229,0.12);
+      border-color: rgba(79,70,229,0.22);
+      color: #dbeafe;
+    }
+
+    .step-chip.purple {
+      background: rgba(168,85,247,0.12);
+      border-color: rgba(168,85,247,0.22);
+      color: #f3e8ff;
+    }
+
+    .arrow { color: var(--soft); font-weight: 900; }
+
+    .day-footer {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 12px 16px;
+      border-top: 1px solid rgba(212,175,55,0.1);
+      background: rgba(212,175,55,0.04);
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .legend-square {
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    .cr-body {
+      padding: 18px 16px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .cr-heading {
+      color: var(--soft);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 900;
+    }
+
+    .cr-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .cr-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      line-height: 1.6;
+      color: var(--text);
+      font-size: 0.87rem;
+    }
+
+    .cr-num {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.25);
+      color: var(--gold-light);
+      font-weight: 900;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* LATE COMERS REPORT LINK BOX */
+    .cr-report-card {
+      background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(74,158,255,0.05));
+      border: 1px solid rgba(212,175,55,0.28);
+      border-radius: 18px;
+      padding: 16px;
+      margin-top: 10px;
+    }
+
+    .cr-report-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gold-light);
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .report-link-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 12px 18px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(212,175,55,0.18), rgba(212,175,55,0.08));
+      border: 1px solid rgba(212,175,55,0.35);
+      color: var(--gold-light);
+      font-weight: 800;
+      font-size: 0.84rem;
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .report-link-btn:hover {
+      background: linear-gradient(135deg, var(--gold), #caa835);
+      color: #111827;
+      transform: translateY(-1px);
+    }
+
+    /* LOW OPACITY BOTTOM FOOTER */
+    .bottom-watermark {
+      text-align: center;
+      margin-top: 36px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(212,175,55,0.08);
+      font-size: 0.78rem;
+      color: var(--soft);
+      opacity: 0.52;
+      letter-spacing: 0.06em;
+      font-family: monospace, -apple-system, sans-serif;
+      user-select: none;
+    }
+
+    .div-dimmed {
+      opacity: 0.18 !important;
+      filter: grayscale(100%) !important;
+      transform: scale(0.96);
+    }
+
+    .div-focused {
+      outline: 2px solid rgba(212,175,55,0.8) !important;
+      outline-offset: 2px !important;
+      box-shadow: 0 0 18px rgba(212,175,55,0.25) !important;
+      transform: scale(1.05);
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(22px);
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.25s ease;
+      background: rgba(15,20,38,0.96);
+      border: 1px solid rgba(212,175,55,0.22);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 10px 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      z-index: 50;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (min-width: 768px) {
+      body { padding: 22px 16px 70px; }
+      .header-layout { flex-direction: row; align-items: center; justify-content: space-between; }
+      .branding-row { justify-content: flex-start; text-align: left; }
+      .title-block { border-left: 2px solid rgba(212,175,55,0.15); padding-left: 18px; }
+      .telemetry-row { border-top: none; padding-top: 0; }
+      .desktop-table-wrap { display: block; }
+      .mobile-cards { display: none; }
+      .day-footer { flex-direction: row; gap: 22px; }
+      .cr-body { padding: 24px 28px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+
+    <header class="header-card">
+      <div class="header-layout">
+        <div class="branding-row">
+          <div class="logo-wrap">
+            <img
+              src="iiebm-logo.webp"
+              alt="IIEBM Logo"
+              class="logo-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"
+            />
+            <div class="logo-fallback">IIEBM</div>
+          </div>
+
+          <div class="title-block">
+            <h1 class="title-heading">Daily Break-Time Exit Plan</h1>
+            <div class="committee-subtitle-wrap">
+              <div class="committee-subtitle">Discipline Committee • PGP ERP 2026-28 • Week-16 (12th to 17th October 2026)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="telemetry-row">
+          <div class="telemetry-left">
+            <div class="pill clock-pill"><span class="clock-dot"></span><span id="liveISTClock">Loading IST...</span></div>
+            <div id="breakCountdownPill" class="pill countdown-pill"><span id="countdownText">Calculating release...</span></div>
+          </div>
+
+          <div class="telemetry-actions">
+            <button class="btn-action" type="button" onclick="openStaggerTimer()">⏱️ Stagger Timer (90s)</button>
+            <button id="btnChimeToggle" class="btn-action" type="button" onclick="toggleChimeAlert()">🔔 Chime: Off</button>
+            <button class="btn-main" type="button" onclick="handleAutoDetectToday()">◔ Auto-Detect Today</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- MANUAL 90-SECOND STAGGER TIMER MODAL -->
+    <div id="staggerTimerModal" style="position: fixed; inset:0; display:none; align-items:center; justify-content:center; background: rgba(0,0,0,0.8); z-index:100; backdrop-filter: blur(6px);">
+      <div style="width:min(440px,92vw); background:linear-gradient(135deg, rgba(16,24,39,0.96), rgba(18,29,46,0.95)); border:1px solid rgba(212,175,55,0.25); border-radius:26px; padding:22px 20px; box-shadow:0 30px 60px rgba(0,0,0,0.6);">
+        <h3 style="font-size:1.2rem; font-weight:900; color:#f8fafc; margin-bottom:8px;">Stairwell Clearance Timer</h3>
+        <p style="font-size:0.8rem; color:#cbd5e1; line-height:1.6; margin-bottom:18px;">
+          Active section has initiated departure. Monitor the countdown below. Do not authorize succeeding section movement until the stairwell clears.
+        </p>
+        <div style="font-size:3.5rem; font-weight:900; letter-spacing:-0.05em; color:var(--gold-light); text-align:center; margin-bottom:16px;" id="timerDigitalDisplay">90s</div>
+        <div style="height:12px; background:rgba(212,175,55,0.08); border:1px solid rgba(212,175,55,0.12); border-radius:999px; overflow:hidden;">
+          <div id="timerProgressBar" style="width:100%; height:100%; background:linear-gradient(90deg, var(--gold), var(--teal)); border-radius:999px; transition: width 1s linear;"></div>
+        </div>
+        <div style="display:flex; gap:12px; margin-top:20px;">
+          <button type="button" onclick="closeStaggerTimer()" style="flex:1; min-height:42px; border-radius:12px; border:1px solid rgba(212,175,55,0.18); background:rgba(212,175,55,0.06); color:var(--text); font-weight:800; cursor:pointer;">Close</button>
+          <button type="button" onclick="restartStaggerTimer()" style="flex:1; min-height:42px; border-radius:12px; border:none; background:linear-gradient(135deg, var(--gold), #caa835); color:#111827; font-weight:800; cursor:pointer;">Restart (90s)</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUTOMATED REAL-TIME TIME-BASED MONITOR SCREEN (EACH DIVISION TRACKED WITH FAIR ROTATION) -->
+    <div class="live-monitor-card">
+      <div class="monitor-grid">
+        <div class="monitor-info">
+          <div id="liveMonitorBadge" class="monitor-badge badge-green-live">● Standby Mode</div>
+          <h2 id="liveMonitorTitle" class="monitor-title title-green">Waiting for next scheduled break slot</h2>
+          <p id="liveMonitorDesc" class="monitor-desc">Automated schedule monitor tracking Week-16 (12th–17th October 2026) break departures individually for each division with equal round-robin rotation based on live IST time.</p>
+        </div>
+        <div class="monitor-countdown-box">
+          <div id="liveMonitorTimer" class="countdown-number green-text">--:--</div>
+          <div id="liveMonitorLabel" class="countdown-label">Time to Next Release</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-card">
+      <div class="filter-top-label">
+        <span>Filter by Section:</span>
+        <span id="filterStatusLabel" class="filter-status-text">Showing All</span>
+      </div>
+      <div class="filter-row">
+        <button class="div-filter-btn active" type="button" data-filter="ALL" onclick="handleDivisionFilter('ALL', this)">All</button>
+        <button class="div-filter-btn" type="button" data-filter="A" onclick="handleDivisionFilter('A', this)">Div A</button>
+        <button class="div-filter-btn" type="button" data-filter="B" onclick="handleDivisionFilter('B', this)">Div B</button>
+        <button class="div-filter-btn" type="button" data-filter="C" onclick="handleDivisionFilter('C', this)">Div C</button>
+        <button class="div-filter-btn" type="button" data-filter="D" onclick="handleDivisionFilter('D', this)">Div D</button>
+        <button class="div-filter-btn" type="button" data-filter="E" onclick="handleDivisionFilter('E', this)">Div E</button>
+        <button class="div-filter-btn" type="button" data-filter="F" onclick="handleDivisionFilter('F', this)">Div F</button>
+        <button class="div-filter-btn" type="button" data-filter="G" onclick="handleDivisionFilter('G', this)">Div G</button>
+        <button class="div-filter-btn" type="button" data-filter="H" onclick="handleDivisionFilter('H', this)">Div H</button>
+      </div>
+    </div>
+
+    <nav class="nav-row" aria-label="Day Navigation">
+      <button class="nav-tab active" type="button" data-tab="all" onclick="handleTabSwitch('all', this)">All Days</button>
+      <button class="nav-tab" type="button" data-tab="mon" onclick="handleTabSwitch('mon', this)">Monday</button>
+      <button class="nav-tab" type="button" data-tab="tue" onclick="handleTabSwitch('tue', this)">Tuesday</button>
+      <button class="nav-tab" type="button" data-tab="wed" onclick="handleTabSwitch('wed', this)">Wednesday</button>
+      <button class="nav-tab" type="button" data-tab="thu" onclick="handleTabSwitch('thu', this)">Thursday</button>
+      <button class="nav-tab" type="button" data-tab="fri" onclick="handleTabSwitch('fri', this)">Friday</button>
+      <button class="nav-tab cr-tab" type="button" data-tab="cr" onclick="handleTabSwitch('cr', this)">For CR's</button>
+    </nav>
+
+    <!-- MONDAY -->
+    <section id="panel-mon" class="day-panel">
+      <div class="panel-header">
+        <div class="day-title"><span class="day-dot"></span><span>Monday (12 Oct)</span></div>
+        <span class="priority-badge p-third">Priority: 3rd Floor First → 4th Floor Second</span>
+      </div>
+
+      <div class="desktop-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Time Slot</th>
+              <th>Ground Bypass</th>
+              <th>2nd Fl (PEP)</th>
+              <th>Priority 1 Release</th>
+              <th>Priority 2 Release</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-slot="09:30">
+              <td class="time-cell">09:30 AM</td>
+              <td><span data-div="C" class="badge badge-green target-item">Div C (SAP)</span> <span data-div="E" class="badge badge-green target-item">Div E (SAP)</span></td>
+              <td><span class="badge-empty">—</span></td>
+              <td><span class="badge badge-indigo">3rd Fl</span> D → F → G → H</td>
+              <td><span class="badge badge-purple">4th Fl</span> B → A</td>
+            </tr>
+            <tr data-slot="13:30">
+              <td class="time-cell">01:30 PM</td>
+              <td><span data-div="B" class="badge badge-green target-item">Div B (SAP)</span> <span data-div="H" class="badge badge-green target-item">Div H (SAP)</span></td>
+              <td><span data-div="C" class="badge badge-red target-item">Div C</span> <span data-div="D" class="badge badge-red target-item">Div D</span></td>
+              <td><span class="badge badge-indigo">3rd Fl</span> E → F → G</td>
+              <td><span class="badge badge-purple">4th Fl</span> A</td>
+            </tr>
+            <tr data-slot="17:30">
+              <td class="time-cell">05:30 PM</td>
+              <td><span class="badge-empty">—</span></td>
+              <td><span class="badge-empty">—</span></td>
+              <td><span class="badge badge-indigo">3rd Fl</span> F → G → H → D → E</td>
+              <td><span class="badge badge-purple">4th Fl</span> C → A → B</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mobile-cards">
+        <div class="slot-card" data-slot="09:30">
+          <div class="slot-header"><span class="slot-time">09:30 AM</span><span class="slot-tag">Breakfast</span></div>
+          <div class="row-block">
+            <div class="row-label">Ground Bypass</div>
+            <div class="row-content">
+              <span data-div="C" class="badge badge-green target-item">Div C</span>
+              <span data-div="E" class="badge badge-green target-item">Div E</span>
+            </div>
+          </div>
+          <div class="row-block">
+            <div class="row-label">Priority 1 (3rd Fl)</div>
+            <div class="row-content">
+              <span data-div="D" class="step-chip indigo target-item">D</span><span class="arrow">→</span>
+              <span data-div="F" class="step-chip indigo target-item">F</span><span class="arrow">→</span>
+              <span data-div="G" class="step-chip indigo target-item">G</span><span class="arrow">→</span>
+              <span data-div="H" class="step-chip indigo target-item">H</span>
+            </div>
+          </div>
+          <div class="row-block">
+            <div class="row-label">Priority 2 (4th Fl)</div>
+            <div class="row-content">
+              <span data-div="B" class="step-chip purple target-item">B</span><span class="arrow">→</span>
+              <span data-div="A" class="step-chip purple target-item">A</span>
+            </div>
+          </div>
+        </div>
+        <div class="slot-card" data-slot="13:30">
+          <div class="slot-header"><span class="slot-time">01:30 PM</span><span class="slot-tag">Lunch</span></div>
+          <div class="row-block">
+            <div class="row-label">Priority 1 (3rd Fl)</div>
+            <div class="row-content">
+              <span data-div="E" class="step-chip indigo target-item">E</span><span class="arrow">→</span>
+              <span data-div="F" class="step-chip indigo target-item">F</span><span class="arrow">→</span>
+              <span data-div="G" class="step-chip indigo target-item">G</span>
+            </div>
+          </div>
+          <div class="row-block">
+            <div class="row-label">Priority 2 (4th Fl)</div>
+            <div class="row-content">
+              <span data-div="A" class="step-chip purple target-item">A</span>
+            </div>
+          </div>
+        </div>
+        <div class="slot-card" data-slot="17:30">
+          <div class="slot-header"><span class="slot-time">05:30 PM</span><span class="slot-tag">Dispersal</span></div>
+          <div class="row-block">
+            <div class="row-label">Priority 1 (3rd Fl)</div>
+            <div class="row-content">
+              <span data-div="F" class="step-chip indigo target-item">F</span><span class="arrow">→</span>
+              <span data-div="G" class="step-chip indigo target-item">G</span><span class="arrow">→</span>
+              <span data-div="H" class="step-chip indigo target-item">H</span><span class="arrow">→</span>
+              <span data-div="D" class="step-chip indigo target-item">D</span><span class="arrow">→</span>
+              <span data-div="E" class="step-chip indigo target-item">E</span>
+            </div>
+          </div>
+          <div class="row-block">
+            <div class="row-label">Priority 2 (4th Fl)</div>
+            <div class="row-content">
+              <span data-div="C" class="step-chip purple target-item">C</span><span class="arrow">→</span>
+              <span data-div="A" class="step-chip purple target-item">A</span><span class="arrow">→</span>
+              <span data-div="B" class="step-chip purple target-item">B</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-footer">
+        <span class="legend-item"><span class="legend-square" style="background:#22c55e;"></span> Green = Ground Floor Direct</span>
+        <span class="legend-item"><span class="legend-square" style="background:#ef4444;"></span> Red = Returning from PEP</span>
+      </div>
+    </section>
+
+    <!-- TUESDAY -->
+    <section id="panel-tue" class="day-panel">
+      <div class="panel-header">
+        <div class="day-title"><span class="day-dot"></span><span>Tuesday (13 Oct)</span></div>
+        <span class="priority-badge p-fourth">Priority: 4th Floor First → 3rd Floor Second</span>
+      </div>
+
+      <div class="desktop-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Time Slot</th>
+              <th>Ground Bypass</th>
+              <th>2nd Fl (PEP)</th>
+              <th>Priority 1 Release</th>
+              <th>Priority 2 Release</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-slot="09:30">
+              <td class="time-cell">09:30 AM</td>
+              <td><span data-div="E" class="badge badge-green target-item">Div E (Versant)</span></td>
+              <td><span class="badge-empty">—</span></td>
+              <td><span class="badge badge-purple">4th Fl</span> A → B → C</td>
+              <td><span class="badge badge-indigo">3rd Fl</span> G → H → D → F</td>
+            </tr>
+            <tr data-slot="13:30">
+              <td class="time-cell">01:30 PM</td>
+              <td><span data-div="F" class="badge badge-green target-item">Div F (SAP)</span> <span data-div="G" class="badge badge-green target-item">Div G (SAP)</span></td>
+              <td><span class="badge-empty">—</span></td>
+              <td><span class="badge badge-purple">4th Fl</span> B → C → A</td>
+              <td><span class="badge badge-indigo">3rd Fl</span> H → D → E</td>
+            </tr>
+            <tr data-slot="17:30">
+              <td class="time-cell">05:30 PM</td>
+              <td><span data-div="B" class="badge badge-green target-item">Div B (SAP)</span> <span data-div="E" class="badge badge-green target-item">Div E (SAP)</span></td>
+              <td><span class="badge-empty">—</span></td>
+              <td><span class="badge badge-purple">4th Fl</span> C → A</td>
+              <td><span class="badge badge-indigo">3rd Fl</span> D → F → G → H</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mobile-cards">
+        <div class="slot-card" data-slot="09:30">
+          <div class="slot-header"><span class="slot-time">09:30 AM</span><span class="slot-tag">Breakfast</span></div>
+          <div class="row-block">
+            <div class="row-label">Priority 1 (4th Fl)</div>
+            <div class="row-content">
+              <span data-div="A" class="step-chip purple target-item">A</span><span class="arrow">→</span>
+              <span data-div="B" class="step-chip purple target-item">B</span><span class="arrow">→</span>
+              <span data-div="C" class="step-chip purple target-item">C</span>
+            </div>
+          </div>
+          <div class="row-block">
+            <div class="row-label">Priority 2 (3rd Fl)</div>
+            <div class="row-content">
+              <span data-div="G" class="step-chip indigo target-item">G</span><span class="arrow">→</span>
+              <span data-div="H" class="step-chip indigo target-item">H</span><span class="arrow">→</span>
+              <span data-div="D" class="step-chip indigo target-item">D</span><span class="arrow">→</span>
+              <span data-div="F" class="step-chip indigo target-item">F</span>
+            </div>
+          </div>
+        </div>
+        <div class="slot-card" data-slot="13:30">
+          <div class="slot-header"><span class="slot-time">01:30 PM</span><span class="slot-tag">Lunch</span></div>
+          <div class="row-block">
+            <div class="row-label">Priority 1 (4th Fl)</div>
+            <div class="row-content">
+              <span data-div="B" class="step-chip purple target-item">B</span><span class="arrow">→</span>
+              <span data-div="C" class="step-chip purple target-item">C</span><span class="arrow">→</span>
+              <span data-div="A" class="step-chip purple target-item">A</span>
+            </div>
+          </div>
+          <div class="row-block">
+            <div class="row-label">Priority 2 (3rd Fl)</div>
+            <div class="row-content">
+              <span data-div="H" class="step-chip indigo target-item">H</span><span class="arrow">→</span>
+              <span data-div="D" class="step-chip indigo target-item">D</span><span class="arrow">→</span>
+              <span data-div="E" class="step-chip indigo target-item">E</span>
+            </div>
+          </div>
+        </div>
+        <div class="slot-card" data-slot="17:30">
+          <div class="slot-header"><span class="slot-time">05:30 PM</span><span class="slot-tag">Dispersal</span></div>
+          <div class="row-block">
+            <div class="row-label">Priority 1 (4th Fl)</div>
+            <div class="row-content">
+              <span data-div="C" class="step-chip purple target-item">C</span><span class="arrow">→</span>
+              <span data-div="A" class="step-chip purple target-item">A</span>
+            </div>
+          </div>
+          <div class="row-block">
+            <div class="row-label">Priority 2 (3rd Fl)</div>
+            <div class="row-content">
+              <span data-div="D" class="step-chip indigo target-item">D</span><span class="arrow">→</span>
+              <span data-div="F" class="step-chip indigo target-item">F</span><span class="arrow">→</span>
+              <span data-div="G" class="step-chip indigo target-item">G</span><span class="arrow">→</span>
+              <span data-div="H" class="step-chip indigo target-item">H</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-footer">
+        <span class="legend-item"><span class="legend-square" style="background:#22c55e;"></span> Green = Ground Floor Direct</span>
+        <span class="legend-item"><span class="legend-square" style="background:#ef4444;"></span> Red = Returning from PEP</span>
+      </div>
+    </section>
+
+    <!-- WEDNESDAY -->
+    <section id="panel-wed" class="day-panel">
+      <div class="panel-header">
+        <div class="day-title"><span class="day-dot"></span><span>Wednesday (14 Oct)</span></div>
+        <span class="priority-badge p-third">Priority: 3rd Floor First → 4th Floor Second</span>
+      </div>
+
+      <div class="desktop-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Time Slot</th>
+              <th>Ground Bypass</th>
+              <th>2nd Fl (PEP)</th>
+              <th>Priority 1 Release</th>
+              <th>Priority 2 Release</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-slot="09:30">
+              <td class="time-cell">09:30 AM</td>
+              <td><span data-div="C" class="badge badge-green target-item">Div C (Versant)</span> <span data-div="G" class="badge badge-green target-item">Div G (SAP)</span> <span data-div="H" class="badge badge-green target-item">Div H (SAP)</span></td>
+              <td><span class="badge-empty">—</span></td>
+              <td><span class="badge badge-indigo">3rd Fl</span> E → F → D</td>
+              <td><span class="badge badge-purple">4th Fl</span> A → B</td>
+            </tr>
+            <tr data-slot="13:30">
+              <td class="time-cell">01:30 PM</td>
+              <td><span data-div="B" class="badge badge-green target-item">Div B (SAP)</span> <span data-div="F" class="badge badge-green target-item">Div F (SAP)</span></td>
+              <td><span class="badge-empty">—</span></td>
+              <td><span class="badge badge-indigo">3rd Fl</span> G → H → D → E</td>
+              <td><span class="badge badge-purple">4th Fl</span> C → A</td>
+            </tr>
+            <tr data-slot="17:30">
+              <td class="time-cell">05:30 PM</td>
+              <td><span class="badge-empty">—</span></td>
+              <td><span data-div="E" class="badge badge-red target-item">Div E</span> <span data-div="F" class="badge badge-red target-item">Div F</span></td>
+              <td><span class="badge-indigo">3rd Fl</span> H → D → G</td>
+              <td><span class="badge badge-purple">4th Fl</span> B → C → A</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mobile-cards">
+        <div class="slot-card" data-slot="09:30">
+          <div class="slot-header"><span class="slot-time">09:30 AM</span><span class="slot-tag">Breakfast</span></div>
+          <div class="row-block">
+            <div class="row-label">Priority 1 (3rd Fl)</div>
+            <div class="row-content">
+              <span data-div="E" class="step-chip indigo target-item">E</span><span class="arrow">→</span>
+              <span data-div="F" class="step-chip indigo target-item">F</span><span class="arrow">→</span>
+              <span data-div="D" class="step-chip indigo target-item">D</span>
+            </div>
+          </div>
+          <div class="row-block">
+            <div class="row-label">Priority 2 (4th Fl)</div>
+            <div class="row-content">
+              <span data-div="A" class="step-chip purple target-item">A</span><span class="arrow">→</span>
+              <span data-div="B" class="step-chip purple target-item">B</span>
+            </div>
+          </div>
+        </div>
+        <div class="slot-card" data-slot="13:30">
+          <div class="slot-header"><span class="slot-time">01:30 PM</span><span class="slot-tag">Lunch</span></div>
+          <div class="row-block">
+            <div class="row-label">Priority 1 (3rd Fl)</div>
+            <div class="row-content">
+              <span data-div="G" class="step-chip indigo target-item">G</span><span class="arrow">→</span>
+              <span data-div="H" class="step-chip indigo target-item">H</span><span class="arrow">→</span>
+              <span data-div="D" class="step-chip indigo target-item">D</span><span class="arrow">→</span>
+              <span data-div="E" class="step-chip indigo target-item">E</span>
+            </div>
+          </div>
+          <div class="row-block">
+            <div class="row-label">Priority 2 (4th Fl)</div>
+            <div class="row-content">
+              <span data-div="C" class="step-chip purple target-item">C</span><span class="arrow">→</span>
+              <span data-div="A" class="step-chip purple target-item">A</span>
+            </div>
+          </div>
+        </div>
+        <div class="slot-card" data-slot="17:30">
+          <div class="slot-header"><span class="slot-time">05:30 PM</span><span class="slot-tag">Dispersal</span></div>
+          <div class="row-block">
+            <div class="row-label">Priority 1 (3rd Fl)</div>
+            <div class="row-content">
+              <span data-div="H" class="step-chip indigo target-item">H</span><span class="arrow">→</span>
+              <span data-div="D" class="step-chip indigo target-item">D</span><span class="arrow">→</span>
+              <span data-div="G" class="step-chip indigo target-item">G</span>
+            </div>
+          </div>
+          <div class="row-block">
+            <div class="row-label">Priority 2 (4th Fl)</div>
+            <div class="row-content">
+              <span data-div="B" class="step-chip purple target-item">B</span><span class="arrow">→</span>
+              <span data-div="C" class="step-chip purple target-item">C</span><span class="arrow">→</span>
+              <span data-div="A" class="step-chip purple target-item">A</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-footer">
+        <span class="legend-item"><span class="legend-square" style="background:#22c55e;"></span> Green = Ground Floor Direct</span>
+        <span class="legend-item"><span class="legend-square" style="background:#ef4444;"></span> Red = Returning from PEP</span>
+      </div>
+    </section>
+
+    <!-- THURSDAY -->
+    <section id="panel-thu" class="day-panel">
+      <div class="panel-header">
+        <div class="day-title"><span class="day-dot"></span><span>Thursday (15 Oct)</span></div>
+        <span class="priority-badge p-fourth">Priority: 4th Floor First → 3rd Floor Second</span>
+      </div>
+
+      <div class="desktop-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Time Slot</th>
+              <th>Ground Bypass</th>
+              <th>2nd Fl (PEP)</th>
+              <th>Priority 1 Release</th>
+              <th>Priority 2 Release</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-slot="09:30">
+              <td class="time-cell">09:30 AM</td>
+              <td><span data-div="A" class="badge badge-green target-item">Div A (SAP)</span> <span data-div="D" class="badge badge-green target-item">Div D (SAP)</span></td>
+              <td><span class="badge-empty">—</span></td>
+              <td><span class="badge badge-purple">4th Fl</span> C → B</td>
+              <td><span class="badge badge-indigo">3rd Fl</span> F → G → H → E</td>
+            </tr>
+            <tr data-slot="13:30">
+              <td class="time-cell">01:30 PM</td>
+              <td><span class="badge-empty">—</span></td>
+              <td><span class="badge-empty">—</span></td>
+              <td><span class="badge badge-purple">4th Fl</span> A → C → B</td>
+              <td><span class="badge badge-indigo">3rd Fl</span> D → E → F → G → H</td>
+            </tr>
+            <tr data-slot="17:30">
+              <td class="time-cell">05:30 PM</td>
+              <td><span class="badge-empty">—</span></td>
+              <td><span data-div="G" class="badge badge-red target-item">Div G</span> <span data-div="H" class="badge badge-red target-item">Div H</span></td>
+              <td><span class="badge-purple">4th Fl</span> C → A → B</td>
+              <td><span class="badge badge-indigo">3rd Fl</span> E → F → D</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mobile-cards">
+        <div class="slot-card" data-slot="09:30">
+          <div class="slot-header"><span class="slot-time">09:30 AM</span><span class="slot-tag">Breakfast</span></div>
+          <div class="row-block">
+            <div class="row-label">Priority 1 (4th Fl)</div>
+            <div class="row-content">
+              <span data-div="C" class="step-chip purple target-item">C</span><span class="arrow">→</span>
+              <span data-div="B" class="step-chip purple target-item">B</span>
+            </div>
+          </div>
+          <div class="row-block">
+            <div class="row-label">Priority 2 (3rd Fl)</div>
+            <div class="row-content">
+              <span data-div="F" class="step-chip indigo target-item">F</span><span class="arrow">→</span>
+              <span data-div="G" class="step-chip indigo target-item">G</span><span class="arrow">→</span>
+              <span data-div="H" class="step-chip indigo target-item">H</span><span class="arrow">→</span>
+              <span data-div="E" class="step-chip indigo target-item">E</span>
+            </div>
+          </div>
+        </div>
+        <div class="slot-card" data-slot="13:30">
+          <div class="slot-header"><span class="slot-time">01:30 PM</span><span class="slot-tag">Lunch</span></div>
+          <div class="row-block">
+            <div class="row-label">Priority 1 (4th Fl)</div>
+            <div class="row-content">
+              <span data-div="A" class="step-chip purple target-item">A</span><span class="arrow">→</span>
+              <span data-div="C" class="step-chip purple target-item">C</span><span class="arrow">→</span>
+              <span data-div="B" class="step-chip purple target-item">B</span>
+            </div>
+          </div>
+          <div class="row-block">
+            <div class="row-label">Priority 2 (3rd Fl)</div>
+            <div class="row-content">
+              <span data-div="D" class="step-chip indigo target-item">D</span><span class="arrow">→</span>
+              <span data-div="E" class="step-chip indigo target-item">E</span><span class="arrow">→</span>
+              <span data-div="F" class="step-chip indigo target-item">F</span><span class="arrow">→</span>
+              <span data-div="G" class="step-chip indigo target-item">G</span><span class="arrow">→</span>
+              <span data-div="H" class="step-chip indigo target-item">H</span>
+            </div>
+          </div>
+        </div>
+        <div class="slot-card" data-slot="17:30">
+          <div class="slot-header"><span class="slot-time">05:30 PM</span><span class="slot-tag">Dispersal</span></div>
+          <div class="row-block">
+            <div class="row-label">Priority 1 (4th Fl)</div>
+            <div class="row-content">
+              <span data-div="C" class="step-chip purple target-item">C</span><span class="arrow">→</span>
+              <span data-div="A" class="step-chip purple target-item">A</span><span class="arrow">→</span>
+              <span data-div="B" class="step-chip purple target-item">B</span>
+            </div>
+          </div>
+          <div class="row-block">
+            <div class="row-label">Priority 2 (3rd Fl)</div>
+            <div class="row-content">
+              <span data-div="E" class="step-chip indigo target-item">E</span><span class="arrow">→</span>
+              <span data-div="F" class="step-chip indigo target-item">F</span><span class="arrow">→</span>
+              <span data-div="D" class="step-chip indigo target-item">D</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-footer">
+        <span class="legend-item"><span class="legend-square" style="background:#22c55e;"></span> Green = Ground Floor Direct</span>
+        <span class="legend-item"><span class="legend-square" style="background:#ef4444;"></span> Red = Returning from PEP</span>
+      </div>
+    </section>
+
+    <!-- FRIDAY -->
+    <section id="panel-fri" class="day-panel">
+      <div class="panel-header">
+        <div class="day-title"><span class="day-dot"></span><span>Friday (16 Oct)</span></div>
+        <span class="priority-badge p-third">Priority: 3rd Floor First → 4th Floor Second</span>
+      </div>
+
+      <div class="desktop-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Time Slot</th>
+              <th>Ground Bypass</th>
+              <th>2nd Fl (PEP)</th>
+              <th>Priority 1 Release</th>
+              <th>Priority 2 Release</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-slot="09:30">
+              <td class="time-cell">09:30 AM</td>
+              <td><span data-div="D" class="badge badge-green target-item">Div D (Versant)</span></td>
+              <td><span class="badge-empty">—</span></td>
+              <td><span class="badge badge-indigo">3rd Fl</span> H → G → F → E</td>
+              <td><span class="badge badge-purple">4th Fl</span> B → A → C</td>
+            </tr>
+            <tr data-slot="13:30">
+              <td class="time-cell">01:30 PM</td>
+              <td><span data-div="A" class="badge badge-green target-item">Div A (SAP)</span></td>
+              <td><span class="badge-empty">—</span></td>
+              <td><span class="badge badge-indigo">3rd Fl</span> G → H → D → E → F</td>
+              <td><span class="badge badge-purple">4th Fl</span> C → B</td>
+            </tr>
+            <tr data-slot="17:30">
+              <td class="time-cell">05:30 PM</td>
+              <td><span data-div="C" class="badge badge-green target-item">Div C (SAP)</span> <span data-div="D" class="badge badge-green target-item">Div D (SAP)</span></td>
+              <td><span data-div="G" class="badge badge-red target-item">Div G</span> <span data-div="H" class="badge badge-red target-item">Div H</span></td>
+              <td><span class="badge-indigo">3rd Fl</span> F → E</td>
+              <td><span class="badge badge-purple">4th Fl</span> A → B</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mobile-cards">
+        <div class="slot-card" data-slot="09:30">
+          <div class="slot-header"><span class="slot-time">09:30 AM</span><span class="slot-tag">Breakfast</span></div>
+          <div class="row-block">
+            <div class="row-label">Priority 1 (3rd Fl)</div>
+            <div class="row-content">
+              <span data-div="H" class="step-chip indigo target-item">H</span><span class="arrow">→</span>
+              <span data-div="G" class="step-chip indigo target-item">G</span><span class="arrow">→</span>
+              <span data-div="F" class="step-chip indigo target-item">F</span><span class="arrow">→</span>
+              <span data-div="E" class="step-chip indigo target-item">E</span>
+            </div>
+          </div>
+          <div class="row-block">
+            <div class="row-label">Priority 2 (4th Fl)</div>
+            <div class="row-content">
+              <span data-div="B" class="step-chip purple target-item">B</span><span class="arrow">→</span>
+              <span data-div="A" class="step-chip purple target-item">A</span><span class="arrow">→</span>
+              <span data-div="C" class="step-chip purple target-item">C</span>
+            </div>
+          </div>
+        </div>
+        <div class="slot-card" data-slot="13:30">
+          <div class="slot-header"><span class="slot-time">01:30 PM</span><span class="slot-tag">Lunch</span></div>
+          <div class="row-block">
+            <div class="row-label">Priority 1 (3rd Fl)</div>
+            <div class="row-content">
+              <span data-div="G" class="step-chip indigo target-item">G</span><span class="arrow">→</span>
+              <span data-div="H" class="step-chip indigo target-item">H</span><span class="arrow">→</span>
+              <span data-div="D" class="step-chip indigo target-item">D</span><span class="arrow">→</span>
+              <span data-div="E" class="step-chip indigo target-item">E</span><span class="arrow">→</span>
+              <span data-div="F" class="step-chip indigo target-item">F</span>
+            </div>
+          </div>
+          <div class="row-block">
+            <div class="row-label">Priority 2 (4th Fl)</div>
+            <div class="row-content">
+              <span data-div="C" class="step-chip purple target-item">C</span><span class="arrow">→</span>
+              <span data-div="B" class="step-chip purple target-item">B</span>
+            </div>
+          </div>
+        </div>
+        <div class="slot-card" data-slot="17:30">
+          <div class="slot-header"><span class="slot-time">05:30 PM</span><span class="slot-tag">Dispersal</span></div>
+          <div class="row-block">
+            <div class="row-label">Priority 1 (3rd Fl)</div>
+            <div class="row-content">
+              <span data-div="F" class="step-chip indigo target-item">F</span><span class="arrow">→</span>
+              <span data-div="E" class="step-chip indigo target-item">E</span>
+            </div>
+          </div>
+          <div class="row-block">
+            <div class="row-label">Priority 2 (4th Fl)</div>
+            <div class="row-content">
+              <span data-div="A" class="step-chip purple target-item">A</span><span class="arrow">→</span>
+              <span data-div="B" class="step-chip purple target-item">B</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-footer">
+        <span class="legend-item"><span class="legend-square" style="background:#22c55e;"></span> Green = Ground Floor Direct</span>
+        <span class="legend-item"><span class="legend-square" style="background:#ef4444;"></span> Red = Returning from PEP</span>
+      </div>
+    </section>
+
+    <!-- CR PROTOCOLS -->
+    <section id="panel-cr" class="day-panel is-hidden">
+      <div class="panel-header">
+        <div class="day-title"><span class="day-dot" style="background:linear-gradient(135deg, var(--gold), var(--teal));"></span><span>Class Representative (CR) Protocols</span></div>
+        <span class="priority-badge" style="background:rgba(212,175,55,0.08); border-color:rgba(212,175,55,0.18); color:var(--gold-light);">Discipline Protocol</span>
+      </div>
+
+      <div class="cr-body">
+        <div class="cr-heading">Official Dispersal Protocol (PGP ERP 2026-28)</div>
+        <ol class="cr-list">
+          <li class="cr-item"><span class="cr-num">1</span><div><strong>In-Class Queue Formation:</strong> Ensure all students stand in a single-file line inside the classroom first; do not open the door or depart until the entire class is fully lined up and ready.</div></li>
+          <li class="cr-item"><span class="cr-num">2</span><div><strong>Inter-Section CR Coordination:</strong> CRs must actively communicate with the CR of the adjacent section before initiating class departure to prevent overlapping releases.</div></li>
+          <li class="cr-item"><span class="cr-num">3</span><div><strong>Bypass on Delay:</strong> If the section scheduled to exit first is not ready, the succeeding section may proceed ahead after immediately informing the CR of the delayed section.</div></li>
+          <li class="cr-item"><span class="cr-num">4</span><div><strong>Left-Side Single-File Transit:</strong> Instruct all students to move strictly along the left side of the corridor and staircases, maintaining single-file order with zero double-filing or overtaking.</div></li>
+          <li class="cr-item"><span class="cr-num">5</span><div><strong>Strict Silence in Transit:</strong> Enforce complete silence while moving through corridors and staircases. Talking and shouting are strictly prohibited.</div></li>
+          <li class="cr-item"><span class="cr-num">6</span><div><strong>Spacing &amp; Posture Safety:</strong> Ensure students maintain adequate physical distance from the person ahead. Hands must be kept out of pockets at all times while moving, especially on stairs.</div></li>
+          <li class="cr-item"><span class="cr-num">7</span><div><strong>Classroom Utilities &amp; Security:</strong> Turn off all fans, lights, and projectors, and securely close the classroom door before the last student departs.</div></li>
+          <li class="cr-item"><span class="cr-num">8</span><div><strong>Punctuality Enforcement:</strong> Late comers not allowed. Ensure all students report back to the classroom strictly before the session resumes.</div></li>
+        </ol>
+
+        <!-- LATE COMERS REPORT LINK BOX -->
+        <div class="cr-report-card">
+          <div class="cr-report-header">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <span>Discipline Committee Incident Reporting</span>
+          </div>
+          <p style="font-size: 0.82rem; color: var(--muted); margin-bottom: 12px; line-height: 1.5;">
+            Log students reporting late after scheduled breaks or violating transit regulations directly to the Discipline Committee database.
+          </p>
+          <a href="https://forms.google.com" target="_blank" rel="noopener noreferrer" class="report-link-btn">
+            <span>📋 Late Comers Report Portal</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOW OPACITY BOTTOM TEXT -->
+    <div class="bottom-watermark">hyper text markup language, Mradul.html</div>
+
+  </div>
+
+  <div id="toastMessage" class="toast">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    <span id="toastText">Notification</span>
+  </div>
+
+  <script>
+    const STORAGE_KEY_DIV = 'iiebm_exit_saved_div';
+    const STORAGE_KEY_CHIME = 'iiebm_exit_chime_enabled';
+
+    let currentSelectedTab = 'all';
+    let currentSelectedDivision = localStorage.getItem(STORAGE_KEY_DIV) || 'ALL';
+    let isChimeEnabled = localStorage.getItem(STORAGE_KEY_CHIME) === 'true';
+    let audioCtx = null;
+    let hasAlertedForDivKey = {};
+
+    function triggerHaptic(pattern = 24) {
+      if ('vibrate' in navigator && typeof navigator.vibrate === 'function') {
+        try { navigator.vibrate(pattern); } catch (e) {}
+      }
+    }
+
+    function handleTabSwitch(dayKey, clickedBtn) {
+      currentSelectedTab = dayKey;
+      triggerHaptic(20);
+
+      document.querySelectorAll('.nav-tab').forEach(btn => btn.classList.remove('active'));
+      if (clickedBtn) clickedBtn.classList.add('active');
+
+      const dayPanels = ['mon','tue','wed','thu','fri'];
+      const crPanel = document.getElementById('panel-cr');
+
+      if (dayKey === 'all') {
+        dayPanels.forEach(id => document.getElementById('panel-' + id).classList.remove('is-hidden'));
+        if (crPanel) crPanel.classList.add('is-hidden');
+      } else if (dayKey === 'cr') {
+        dayPanels.forEach(id => document.getElementById('panel-' + id).classList.add('is-hidden'));
+        if (crPanel) crPanel.classList.remove('is-hidden');
+      } else {
+        dayPanels.forEach(id => {
+          const el = document.getElementById('panel-' + id);
+          if (el) el.classList.toggle('is-hidden', id !== dayKey);
+        });
+        if (crPanel) crPanel.classList.add('is-hidden');
+      }
+      applyDivisionHighlighting();
+    }
+
+    function handleDivisionFilter(div, btn, initial = false) {
+      currentSelectedDivision = div;
+      localStorage.setItem(STORAGE_KEY_DIV, div);
+      triggerHaptic(24);
+
+      document.querySelectorAll('.div-filter-btn').forEach(el => el.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const label = document.getElementById('filterStatusLabel');
+      if (label) {
+        label.textContent = div === 'ALL' ? 'Showing All' : 'Highlighting Div ' + div;
+      }
+      applyDivisionHighlighting();
+
+      if (!initial && div !== 'ALL') {
+        triggerToast('Viewing Section ' + div);
+      }
+    }
+
+    function applyDivisionHighlighting() {
+      const targets = document.querySelectorAll('.target-item');
+      if (currentSelectedDivision === 'ALL') {
+        targets.forEach(el => el.classList.remove('div-dimmed', 'div-focused'));
+        return;
+      }
+      targets.forEach(el => {
+        const d = el.getAttribute('data-div');
+        if (d === currentSelectedDivision) {
+          el.classList.add('div-focused');
+          el.classList.remove('div-dimmed');
+        } else {
+          el.classList.add('div-dimmed');
+          el.classList.remove('div-focused');
+        }
+      });
+    }
+
+    /* MANUAL STAGGER TIMER CONTROLS */
+    function openStaggerTimer() {
+      triggerHaptic(28);
+      const modal = document.getElementById('staggerTimerModal');
+      modal.style.display = 'flex';
+      restartStaggerTimer();
+    }
+
+    function closeStaggerTimer() {
+      triggerHaptic(18);
+      const modal = document.getElementById('staggerTimerModal');
+      modal.style.display = 'none';
+      if (staggerInterval) clearInterval(staggerInterval);
+    }
+
+    let staggerDuration = 90;
+    let staggerRemaining = 90;
+    let staggerInterval = null;
+
+    function restartStaggerTimer() {
+      if (staggerInterval) clearInterval(staggerInterval);
+      staggerRemaining = staggerDuration;
+      updateStaggerUI();
+
+      staggerInterval = setInterval(() => {
+        staggerRemaining--;
+        updateStaggerUI();
+        if (staggerRemaining <= 0) {
+          clearInterval(staggerInterval);
+          triggerHaptic([100, 60, 100, 60, 200]);
+          playCampusChime();
+          triggerToast('STAIRWELL CLEAR: Next section may descend!');
+          const digital = document.getElementById('timerDigitalDisplay');
+          if (digital) digital.textContent = 'CLEAR!';
+        }
+      }, 1000);
+    }
+
+    function updateStaggerUI() {
+      const digital = document.getElementById('timerDigitalDisplay');
+      const bar = document.getElementById('timerProgressBar');
+      if (digital) digital.textContent = staggerRemaining + 's';
+      if (bar) bar.style.width = ((staggerRemaining / staggerDuration) * 100) + '%';
+    }
+
+    /* HELPER TO RETRIEVE FLOOR BY DIVISION */
+    function getDivisionFloor(divName) {
+      const letter = divName.replace(/[^A-H]/gi, '').toUpperCase();
+      if (['A', 'B', 'C'].includes(letter)) return '4th Floor';
+      return '3rd Floor';
+    }
+
+    /* WEEK-16 COMPLETE SCHEDULE DICTIONARY (EACH DIVISION EXPLICITLY SEQUENCED WITH EQUAL ROUND-ROBIN ROTATION) */
+    const WEEK16_SCHEDULE = {
+      mon: {
+        '09:30': {
+          divisions: ['Div D', 'Div F', 'Div G', 'Div H', 'Div B', 'Div A'],
+          bypass: 'Div C (SAP), Div E (SAP)'
+        },
+        '13:30': {
+          divisions: ['Div E', 'Div F', 'Div G', 'Div A'],
+          bypass: 'Div B (SAP), Div H (SAP) | 2nd Fl Return: Div C, Div D'
+        },
+        '17:30': {
+          divisions: ['Div F', 'Div G', 'Div H', 'Div D', 'Div E', 'Div C', 'Div A', 'Div B'],
+          bypass: 'None'
+        }
+      },
+      tue: {
+        '09:30': {
+          divisions: ['Div A', 'Div B', 'Div C', 'Div G', 'Div H', 'Div D', 'Div F'],
+          bypass: 'Div E (Versant Lab)'
+        },
+        '13:30': {
+          divisions: ['Div B', 'Div C', 'Div A', 'Div H', 'Div D', 'Div E'],
+          bypass: 'Div F (SAP), Div G (SAP)'
+        },
+        '17:30': {
+          divisions: ['Div C', 'Div A', 'Div D', 'Div F', 'Div G', 'Div H'],
+          bypass: 'Div B (SAP), Div E (SAP)'
+        }
+      },
+      wed: {
+        '09:30': {
+          divisions: ['Div E', 'Div F', 'Div D', 'Div A', 'Div B'],
+          bypass: 'Div C (Versant), Div G (SAP), Div H (SAP)'
+        },
+        '13:30': {
+          divisions: ['Div G', 'Div H', 'Div D', 'Div E', 'Div C', 'Div A'],
+          bypass: 'Div B (SAP), Div F (SAP)'
+        },
+        '17:30': {
+          divisions: ['Div H', 'Div D', 'Div G', 'Div B', 'Div C', 'Div A'],
+          bypass: '2nd Fl Return: Div E, Div F'
+        }
+      },
+      thu: {
+        '09:30': {
+          divisions: ['Div C', 'Div B', 'Div F', 'Div G', 'Div H', 'Div E'],
+          bypass: 'Div A (SAP), Div D (SAP)'
+        },
+        '13:30': {
+          divisions: ['Div A', 'Div C', 'Div B', 'Div D', 'Div E', 'Div F', 'Div G', 'Div H'],
+          bypass: 'None'
+        },
+        '17:30': {
+          divisions: ['Div C', 'Div A', 'Div B', 'Div E', 'Div F', 'Div D'],
+          bypass: '2nd Fl Return: Div G, Div H'
+        }
+      },
+      fri: {
+        '09:30': {
+          divisions: ['Div H', 'Div G', 'Div F', 'Div E', 'Div B', 'Div A', 'Div C'],
+          bypass: 'Div D (Versant Lab)'
+        },
+        '13:30': {
+          divisions: ['Div G', 'Div H', 'Div D', 'Div E', 'Div F', 'Div C', 'Div B'],
+          bypass: 'Div A (SAP)'
+        },
+        '17:30': {
+          divisions: ['Div F', 'Div E', 'Div A', 'Div B'],
+          bypass: 'Div C (SAP), Div D (SAP) | 2nd Fl Return: Div G, Div H'
+        }
+      }
+    };
+
+    const BREAK_SLOTS = [
+      { name: '09:30 AM Breakfast', hours: 9, minutes: 30, key: '09:30' },
+      { name: '01:30 PM Lunch', hours: 13, minutes: 30, key: '13:30' },
+      { name: '05:30 PM Dispersal', hours: 17, minutes: 30, key: '17:30' }
+    ];
+
+    /* AUTOMATED REAL-TIME TIME-BASED MONITOR ENGINE (PER DIVISION) */
+    function updateLiveTelemetry() {
+      const now = new Date();
+      const formatter = new Intl.DateTimeFormat('en-IN', {
+        timeZone: 'Asia/Kolkata',
+        weekday: 'short', month: 'short', day: 'numeric',
+        hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
+      });
+
+      const clockEl = document.getElementById('liveISTClock');
+      if (clockEl) clockEl.textContent = formatter.format(now);
+
+      const dayOfWeek = now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata', weekday: 'short' }).toLowerCase();
+      const pill = document.getElementById('breakCountdownPill');
+      const text = document.getElementById('countdownText');
+
+      const badge = document.getElementById('liveMonitorBadge');
+      const title = document.getElementById('liveMonitorTitle');
+      const desc = document.getElementById('liveMonitorDesc');
+      const timer = document.getElementById('liveMonitorTimer');
+      const label = document.getElementById('liveMonitorLabel');
+
+      if (dayOfWeek === 'sun' || dayOfWeek === 'sat') {
+        pill.classList.remove('active-release');
+        text.textContent = 'Weekend — No active breaks today';
+        badge.className = 'monitor-badge badge-green-live';
+        badge.textContent = '● Weekend Standby';
+        title.className = 'monitor-title title-green';
+        title.textContent = 'No Scheduled Classes Today (Weekend)';
+        desc.textContent = 'Week-16 monitoring runs Monday through Friday based on live IST time.';
+        timer.textContent = 'OFF';
+        timer.className = 'countdown-number green-text';
+        label.textContent = 'Weekend Rest Period';
+        return;
+      }
+
+      const activeDayKey = (dayOfWeek in WEEK16_SCHEDULE) ? dayOfWeek : 'mon';
+      const daySlots = WEEK16_SCHEDULE[activeDayKey];
+
+      const dateStr = now.toLocaleDateString('en-US', { timeZone: 'Asia/Kolkata' });
+      const [m, d, y] = dateStr.split('/');
+      const midnight = new Date(`${y}-${m.padStart(2,'0')}-${d.padStart(2,'0')}T00:00:00+05:30`);
+      const elapsed = Math.floor((now.getTime() - midnight.getTime()) / 1000);
+
+      let nextBreak = null;
+      let minDiff = Infinity;
+      let activeSlot = null;
+
+      for (const slot of BREAK_SLOTS) {
+        const slotSeconds = (slot.hours * 3600) + (slot.minutes * 60);
+        const slotData = daySlots[slot.key];
+        const numDivisions = slotData ? slotData.divisions.length : 6;
+        const totalSlotDuration = (numDivisions * 120);
+
+        if (elapsed >= slotSeconds - 120 && elapsed <= slotSeconds + totalSlotDuration) {
+          activeSlot = slot;
+          break;
+        }
+
+        const diff = slotSeconds - elapsed;
+        if (diff > 0 && diff < minDiff) {
+          minDiff = diff;
+          nextBreak = slot;
+        }
+      }
+
+      if (activeSlot) {
+        const slotSecs = (activeSlot.hours * 3600) + (activeSlot.minutes * 60);
+        const slotRelative = elapsed - slotSecs;
+        const slotData = daySlots[activeSlot.key] || { divisions: ['Div D', 'Div F', 'Div G', 'Div H', 'Div B', 'Div A'], bypass: 'None' };
+        const divisions = slotData.divisions;
+        const N = divisions.length;
+
+        if (slotRelative < 0) {
+          // 1. T-2 MINUTES: GREEN PRE-WARNING (120s down to 0s)
+          const rem = Math.abs(slotRelative);
+          const firstDiv = divisions[0];
+          const firstFloor = getDivisionFloor(firstDiv);
+
+          badge.className = 'monitor-badge badge-green-live';
+          badge.textContent = '● Pre-Warning: Form In-Class Queues';
+          title.className = 'monitor-title title-green';
+          title.textContent = `NEXT DEPARTURE OF ${firstDiv.toUpperCase()} (${firstFloor.toUpperCase()}) IN`;
+          desc.textContent = `${firstDiv} students form a single-file line inside the classroom now. Classroom door remains closed until release. Ground Bypass: ${slotData.bypass}`;
+          timer.textContent = rem + 's';
+          timer.className = 'countdown-number green-text';
+          label.textContent = `2-Minute Reverse Countdown`;
+          pill.classList.add('active-release');
+          text.textContent = `⚡ NEXT DEPARTURE: ${firstDiv} IN ${rem}s`;
+        } else {
+          // 2. DIVISION-BY-DIVISION TRANSIT CYCLE
+          const currentDivIndex = Math.floor(slotRelative / 120);
+          const withinCycleOffset = slotRelative % 120;
+
+          if (currentDivIndex < N) {
+            const currentDiv = divisions[currentDivIndex];
+            const currentFloor = getDivisionFloor(currentDiv);
+
+            if (withinCycleOffset < 90) {
+              // 90-SECOND ACTIVE REVERSE COUNTDOWN IN RED FOR CURRENT DIVISION
+              const rem = 90 - withinCycleOffset;
+              badge.className = 'monitor-badge badge-red-live';
+              badge.textContent = `● ACTIVE TRANSIT: ${currentDiv.toUpperCase()} (${currentFloor.toUpperCase()})`;
+              title.className = 'monitor-title title-red';
+              title.textContent = `CURRENT DEPARTURE OF ${currentDiv.toUpperCase()} (${currentFloor.toUpperCase()})`;
+              desc.textContent = `${currentDiv} is currently descending the stairwell in single file along the left side. Enforce complete silence. All other classes remain seated.`;
+              timer.textContent = rem + 's';
+              timer.className = 'countdown-number red-text';
+              label.textContent = `90-Second Reverse Countdown`;
+              pill.classList.add('active-release');
+              text.textContent = `⚡ CURRENT: ${currentDiv} MOVING (${rem}s left)`;
+
+              const alertKey = activeSlot.key + '_' + currentDiv + '_red';
+              if (isChimeEnabled && !hasAlertedForDivKey[alertKey]) {
+                playCampusChime();
+                triggerHaptic([80, 50, 80]);
+                hasAlertedForDivKey[alertKey] = true;
+              }
+            } else {
+              // 30-SECOND GAP IN GREEN SHOWING UPCOMING SECTION
+              const rem = 120 - withinCycleOffset;
+
+              if (currentDivIndex + 1 < N) {
+                const nextDiv = divisions[currentDivIndex + 1];
+                const nextFloor = getDivisionFloor(nextDiv);
+
+                badge.className = 'monitor-badge badge-green-live';
+                badge.textContent = `● 30s Stairwell Clearance Gap`;
+                title.className = 'monitor-title title-green';
+                title.textContent = `DEPARTURE OF ${nextDiv.toUpperCase()} (${nextFloor.toUpperCase()}) IN`;
+                desc.textContent = `Stairwell clearing after ${currentDiv}. ${nextDiv} form single-file line inside the classroom and prepare for departure.`;
+                timer.textContent = rem + 's';
+                timer.className = 'countdown-number green-text';
+                label.textContent = `30-Second Gap Reverse Countdown`;
+                pill.classList.add('active-release');
+                text.textContent = `⚡ UPCOMING: ${nextDiv} IN ${rem}s`;
+
+                const alertKey = activeSlot.key + '_' + nextDiv + '_gap';
+                if (isChimeEnabled && !hasAlertedForDivKey[alertKey]) {
+                  playCampusChime();
+                  triggerHaptic([40, 40]);
+                  hasAlertedForDivKey[alertKey] = true;
+                }
+              } else {
+                badge.className = 'monitor-badge badge-green-live';
+                badge.textContent = '● Final Clearance';
+                title.className = 'monitor-title title-green';
+                title.textContent = `CLEARING FINAL TRANSIT (${currentDiv.toUpperCase()})`;
+                desc.textContent = `Final division cleared. Stairwell returning to idle state.`;
+                timer.textContent = rem + 's';
+                timer.className = 'countdown-number green-text';
+                label.textContent = `Clearing Stairwell`;
+              }
+            }
+          } else {
+            // ALL DIVISIONS COMPLETED FOR THIS SLOT
+            badge.className = 'monitor-badge badge-green-live';
+            badge.textContent = '● Dispersal Concluded';
+            title.className = 'monitor-title title-green';
+            title.textContent = `${activeSlot.name.toUpperCase()} TRANSIT COMPLETE`;
+            desc.textContent = `All scheduled divisions (${divisions.join(', ')}) have successfully cleared the stairwells.`;
+            timer.textContent = '0s';
+            timer.className = 'countdown-number green-text';
+            label.textContent = 'Stairwell Clear';
+          }
+        }
+      } else if (nextBreak) {
+        pill.classList.remove('active-release');
+        badge.className = 'monitor-badge badge-green-live';
+        badge.textContent = '● Standby Mode';
+        title.className = 'monitor-title title-green';
+        title.textContent = `NEXT BREAK: ${nextBreak.name.toUpperCase()}`;
+        desc.textContent = `Automated monitor active for Week 16. Pre-warning triggers automatically 2 minutes prior to departure.`;
+        const h = Math.floor(minDiff / 3600);
+        const mins = Math.floor((minDiff % 3600) / 60);
+        const seconds = minDiff % 60;
+        let timeStr = '';
+        if (h > 0) timeStr += h + 'h ';
+        timeStr += mins + 'm ' + seconds + 's';
+        timer.textContent = timeStr;
+        timer.className = 'countdown-number green-text';
+        label.textContent = 'Time to Next Break Slot';
+        text.textContent = `Next: ${nextBreak.name} (in ${timeStr})`;
+      } else {
+        pill.classList.remove('active-release');
+        badge.className = 'monitor-badge badge-green-live';
+        badge.textContent = '● Daily Schedule Concluded';
+        title.className = 'monitor-title title-green';
+        title.textContent = 'ALL DAILY BREAKS COMPLETED';
+        desc.textContent = 'All scheduled break slots for today have successfully concluded.';
+        timer.textContent = 'DONE';
+        timer.className = 'countdown-number green-text';
+        label.textContent = 'Completed For Today';
+        text.textContent = 'All breaks completed today';
+      }
+    }
+
+    function toggleChimeAlert() {
+      isChimeEnabled = !isChimeEnabled;
+      localStorage.setItem(STORAGE_KEY_CHIME, isChimeEnabled);
+      triggerHaptic(25);
+      const btn = document.getElementById('btnChimeToggle');
+      if (isChimeEnabled) {
+        btn.classList.add('enabled');
+        btn.textContent = '🔔 Chime: On';
+        playCampusChime();
+        triggerToast('Break departure chime enabled');
+      } else {
+        btn.classList.remove('enabled');
+        btn.textContent = '🔔 Chime: Off';
+        triggerToast('Chime muted');
+      }
+    }
+
+    function playCampusChime() {
+      try {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+
+        const now = audioCtx.currentTime;
+        const osc1 = audioCtx.createOscillator();
+        const gain1 = audioCtx.createGain();
+        osc1.type = 'sine';
+        osc1.frequency.setValueAtTime(880, now);
+        gain1.gain.setValueAtTime(0.18, now);
+        gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.6);
+        osc1.connect(gain1);
+        gain1.connect(audioCtx.destination);
+        osc1.start(now);
+        osc1.stop(now + 0.6);
+
+        const osc2 = audioCtx.createOscillator();
+        const gain2 = audioCtx.createGain();
+        osc2.type = 'sine';
+        osc2.frequency.setValueAtTime(1174.66, now + 0.25);
+        gain2.gain.setValueAtTime(0.22, now + 0.25);
+        gain2.gain.exponentialRampToValueAtTime(0.001, now + 1.1);
+        osc2.connect(gain2);
+        gain2.connect(audioCtx.destination);
+        osc2.start(now + 0.25);
+        osc2.stop(now + 1.1);
+      } catch (e) {
+        console.warn('AudioContext blocked:', e);
+      }
+    }
+
+    function handleAutoDetectToday() {
+      triggerHaptic(28);
+      const now = new Date();
+      const dayFormatter = new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Kolkata', weekday: 'short' });
+      const current = dayFormatter.format(now).toLowerCase();
+      const valid = ['mon','tue','wed','thu','fri'];
+      let target = 'mon';
+
+      if (valid.includes(current)) {
+        target = current;
+        triggerToast('Auto-detected today (' + current.toUpperCase() + ')');
+      } else {
+        triggerToast('Today is ' + current.toUpperCase() + ' (Weekend) — Showing Monday schedule');
+      }
+
+      const tab = document.querySelector('.nav-tab[data-tab="' + target + '"]');
+      handleTabSwitch(target, tab);
+    }
+
+    function triggerToast(msg) {
+      const toast = document.getElementById('toastMessage');
+      const text = document.getElementById('toastText');
+      if (!toast || !text) return;
+      text.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
+    /* TOUCH SWIPE CONTROLLER */
+    (function initSwipe() {
+      const area = document.querySelector('.app');
+      const tabs = ['all','mon','tue','wed','thu','fri','cr'];
+      let startX = 0;
+      let startY = 0;
+
+      area.addEventListener('touchstart', (e) => {
+        startX = e.changedTouches[0].screenX;
+        startY = e.changedTouches[0].screenY;
+      }, { passive: true });
+
+      area.addEventListener('touchend', (e) => {
+        const endX = e.changedTouches[0].screenX;
+        const endY = e.changedTouches[0].screenY;
+        const dx = endX - startX;
+        const dy = endY - startY;
+
+        if (Math.abs(dx) > 65 && Math.abs(dx) > Math.abs(dy) * 1.4) {
+          const currentIndex = tabs.indexOf(currentSelectedTab);
+          if (dx < 0 && currentIndex < tabs.length - 1) {
+            const next = tabs[currentIndex + 1];
+            const btn = document.querySelector('.nav-tab[data-tab="' + next + '"]');
+            handleTabSwitch(next, btn);
+          } else if (dx > 0 && currentIndex > 0) {
+            const prev = tabs[currentIndex - 1];
+            const btn = document.querySelector('.nav-tab[data-tab="' + prev + '"]');
+            handleTabSwitch(prev, btn);
+          }
+        }
+      }, { passive: true });
+    })();
+
+    window.addEventListener('DOMContentLoaded', () => {
+      if (currentSelectedDivision !== 'ALL') {
+        const btn = document.querySelector('.div-filter-btn[data-filter="' + currentSelectedDivision + '"]');
+        handleDivisionFilter(currentSelectedDivision, btn, true);
+      }
+      if (isChimeEnabled) {
+        const btn = document.getElementById('btnChimeToggle');
+        btn.classList.add('enabled');
+        btn.textContent = '🔔 Chime: On';
+      }
+      handleAutoDetectToday();
+      updateLiveTelemetry();
+      setInterval(updateLiveTelemetry, 1000);
+    });
+  </script>
+</body>
+</html>
+
+
